@@ -1,0 +1,18 @@
+{
+  "name": "office-it-maps",
+  "version": "1.0.0",
+  "description": "Prosty planer rzutu biura i ewidencji sprzętu IT w przeglądarce",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "office-map",
+    "it-assets",
+    "floor-plan",
+    "network-diagram"
+  ],
+  "author": "",
+  "license": "MIT"
+}

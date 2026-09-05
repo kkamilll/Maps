@@ -1,0 +1,617 @@
+{
+  "currentRoomId": "room_default",
+  "elements": [
+    {
+      "id": "zone_dev",
+      "type": "zone",
+      "x": 60,
+      "y": 60,
+      "width": 560,
+      "height": 480,
+      "rotation": 0,
+      "props": {
+        "label": "Open Space - Dział Programistów",
+        "fillColor": "rgba(59, 130, 246, 0.06)",
+        "borderColor": "#3b82f6"
+      }
+    },
+    {
+      "id": "zone_server",
+      "type": "zone",
+      "x": 660,
+      "y": 60,
+      "width": 320,
+      "height": 280,
+      "rotation": 0,
+      "props": {
+        "label": "Serwerownia (Klimatyzowana)",
+        "fillColor": "rgba(16, 185, 129, 0.08)",
+        "borderColor": "#10b981"
+      }
+    },
+    {
+      "id": "zone_conf",
+      "type": "zone",
+      "x": 660,
+      "y": 380,
+      "width": 440,
+      "height": 320,
+      "rotation": 0,
+      "props": {
+        "label": "Sala Konferencyjna \"Apollo\"",
+        "fillColor": "rgba(168, 85, 247, 0.06)",
+        "borderColor": "#a855f7"
+      }
+    },
+    {
+      "id": "w1",
+      "type": "wall",
+      "x": 50,
+      "y": 50,
+      "width": 950,
+      "height": 14,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w2",
+      "type": "wall",
+      "x": 50,
+      "y": 50,
+      "width": 14,
+      "height": 680,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w3",
+      "type": "wall",
+      "x": 50,
+      "y": 716,
+      "width": 1060,
+      "height": 14,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w4",
+      "type": "wall",
+      "x": 990,
+      "y": 50,
+      "width": 14,
+      "height": 340,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w5",
+      "type": "wall",
+      "x": 1100,
+      "y": 380,
+      "width": 14,
+      "height": 350,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w_srv_v",
+      "type": "wall",
+      "x": 650,
+      "y": 50,
+      "width": 14,
+      "height": 290,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "w_srv_h",
+      "type": "wall",
+      "x": 650,
+      "y": 330,
+      "width": 350,
+      "height": 14,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "win1",
+      "type": "window_elem",
+      "x": 160,
+      "y": 48,
+      "width": 140,
+      "height": 14,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "win2",
+      "type": "window_elem",
+      "x": 380,
+      "y": 48,
+      "width": 140,
+      "height": 14,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "door_srv",
+      "type": "door",
+      "x": 680,
+      "y": 330,
+      "width": 50,
+      "height": 40,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "door_conf",
+      "type": "door",
+      "x": 650,
+      "y": 400,
+      "width": 50,
+      "height": 40,
+      "rotation": 90,
+      "props": {}
+    },
+    {
+      "id": "rack_main",
+      "type": "server_rack",
+      "x": 700,
+      "y": 90,
+      "width": 54,
+      "height": 54,
+      "rotation": 0,
+      "props": {
+        "employee": "Admin Team",
+        "department": "Infrastruktura IT",
+        "model": "Szafa RACK 42U - HP ProLiant DL380 Gen10",
+        "cpuRam": "2x Intel Xeon Gold 6248R / 512GB RAM / 24TB NVMe",
+        "serialNumber": "SRV-MAIN-01",
+        "ipAddress": "192.168.1.10",
+        "macAddress": "00:50:56:A3:B1:01",
+        "switchPort": "Port 1-2 (LACP 20G)",
+        "status": "active"
+      }
+    },
+    {
+      "id": "sw_core",
+      "type": "network_switch",
+      "x": 800,
+      "y": 90,
+      "width": 50,
+      "height": 30,
+      "rotation": 0,
+      "props": {
+        "employee": "Admin Team",
+        "department": "Infrastruktura IT",
+        "model": "Cisco Catalyst 3850 48P PoE+",
+        "cpuRam": "Core Switch 48x 1Gbps PoE + 4x 10G SFP+",
+        "serialNumber": "SW-CORE-01",
+        "ipAddress": "192.168.1.1",
+        "macAddress": "00:1E:F7:88:99:00",
+        "switchPort": "Uplink Fiber 10Gbps",
+        "status": "active"
+      }
+    },
+    {
+      "id": "ups_rack",
+      "type": "ups_battery",
+      "x": 700,
+      "y": 190,
+      "width": 30,
+      "height": 38,
+      "rotation": 0,
+      "props": {
+        "employee": "Infrastruktura",
+        "department": "Serwerownia",
+        "model": "APC Smart-UPS RT 3000VA On-Line",
+        "cpuRam": "2700W / Podtrzymanie 45 min",
+        "serialNumber": "UPS-SRV-01",
+        "ipAddress": "192.168.1.250",
+        "macAddress": "00:C0:B7:12:34:56",
+        "switchPort": "SW-CORE-P46",
+        "status": "active"
+      }
+    },
+    {
+      "id": "desk_b1",
+      "type": "desk_bench_double",
+      "x": 100,
+      "y": 120,
+      "width": 110,
+      "height": 120,
+      "rotation": 0,
+      "props": {
+        "label": "Wyspa DEV 1"
+      }
+    },
+    {
+      "id": "chair1_a",
+      "type": "office_chair",
+      "x": 135,
+      "y": 80,
+      "width": 34,
+      "height": 34,
+      "rotation": 180,
+      "props": {}
+    },
+    {
+      "id": "chair1_b",
+      "type": "office_chair",
+      "x": 135,
+      "y": 245,
+      "width": 34,
+      "height": 34,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "pc_dev_01",
+      "type": "dual_monitor",
+      "x": 125,
+      "y": 130,
+      "width": 60,
+      "height": 36,
+      "rotation": 0,
+      "props": {
+        "employee": "Jan Kowalski",
+        "department": "Senior Frontend Dev",
+        "model": "Dell Precision 3660 + 2x Dell U2723QE 4K",
+        "cpuRam": "i9-13900K / 64GB DDR5 / RTX 4070 / 2TB NVMe",
+        "serialNumber": "PC-DEV-01",
+        "ipAddress": "192.168.1.101",
+        "macAddress": "E8:6A:64:11:22:33",
+        "switchPort": "SW-CORE-P01",
+        "status": "active"
+      }
+    },
+    {
+      "id": "pc_dev_02",
+      "type": "laptop",
+      "x": 130,
+      "y": 190,
+      "width": 46,
+      "height": 36,
+      "rotation": 0,
+      "props": {
+        "employee": "Anna Nowak",
+        "department": "UX/UI Designer",
+        "model": "Apple MacBook Pro 16\" M3 Max + Studio Display",
+        "cpuRam": "Apple M3 Max 16-core / 48GB Unified / 1TB SSD",
+        "serialNumber": "MAC-UX-02",
+        "ipAddress": "192.168.1.102",
+        "macAddress": "F0:18:98:AA:BB:CC",
+        "switchPort": "SW-CORE-P02",
+        "status": "active"
+      }
+    },
+    {
+      "id": "desk_b2",
+      "type": "desk_bench_double",
+      "x": 300,
+      "y": 120,
+      "width": 110,
+      "height": 120,
+      "rotation": 0,
+      "props": {
+        "label": "Wyspa DEV 2"
+      }
+    },
+    {
+      "id": "chair2_a",
+      "type": "office_chair",
+      "x": 335,
+      "y": 80,
+      "width": 34,
+      "height": 34,
+      "rotation": 180,
+      "props": {}
+    },
+    {
+      "id": "chair2_b",
+      "type": "office_chair",
+      "x": 335,
+      "y": 245,
+      "width": 34,
+      "height": 34,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "pc_dev_03",
+      "type": "pc_workstation",
+      "x": 330,
+      "y": 130,
+      "width": 48,
+      "height": 44,
+      "rotation": 0,
+      "props": {
+        "employee": "Piotr Wiśniewski",
+        "department": "Backend Tech Lead",
+        "model": "Lenovo ThinkStation P3 Tower + 34\" Curved",
+        "cpuRam": "i7-13700 / 32GB RAM / 2TB NVMe SSD",
+        "serialNumber": "PC-DEV-03",
+        "ipAddress": "192.168.1.103",
+        "macAddress": "D4:5D:64:99:88:77",
+        "switchPort": "SW-CORE-P03",
+        "status": "active"
+      }
+    },
+    {
+      "id": "voip_dev_03",
+      "type": "voip_phone",
+      "x": 380,
+      "y": 135,
+      "width": 24,
+      "height": 24,
+      "rotation": 0,
+      "props": {
+        "employee": "Piotr Wiśniewski",
+        "department": "Backend Tech Lead",
+        "model": "Yealink SIP-T46U",
+        "cpuRam": "Wewn. 103 / PoE",
+        "serialNumber": "VOIP-DEV-03",
+        "ipAddress": "192.168.1.183",
+        "macAddress": "80:5E:C0:44:55:66",
+        "switchPort": "SW-CORE-P04",
+        "status": "active"
+      }
+    },
+    {
+      "id": "pc_dev_04",
+      "type": "pc_workstation",
+      "x": 330,
+      "y": 185,
+      "width": 48,
+      "height": 44,
+      "rotation": 0,
+      "props": {
+        "employee": "Magdalena Kaczmarek",
+        "department": "QA & DevOps Engineer",
+        "model": "HP Z2 Mini G9 Workstation",
+        "cpuRam": "i7-12700K / 64GB RAM / 1TB SSD",
+        "serialNumber": "PC-QA-04",
+        "ipAddress": "192.168.1.104",
+        "macAddress": "A4:BB:6D:77:88:99",
+        "switchPort": "SW-CORE-P05",
+        "status": "active"
+      }
+    },
+    {
+      "id": "prn_central",
+      "type": "printer",
+      "x": 500,
+      "y": 140,
+      "width": 46,
+      "height": 46,
+      "rotation": 0,
+      "props": {
+        "employee": "Współdzielona (Piętro 1)",
+        "department": "Administracja & Dev",
+        "model": "Canon imageRUNNER ADVANCE DX C3830i",
+        "cpuRam": "Kolorowy laser wielofunkcyjny A3/A4, Duplex, LAN",
+        "serialNumber": "PRN-CANON-01",
+        "ipAddress": "192.168.1.200",
+        "macAddress": "00:1B:A9:74:32:11",
+        "switchPort": "SW-CORE-P24",
+        "status": "active"
+      }
+    },
+    {
+      "id": "ap_openspace",
+      "type": "wifi_ap",
+      "x": 280,
+      "y": 320,
+      "width": 36,
+      "height": 36,
+      "rotation": 0,
+      "props": {
+        "employee": "Dostęp Ogólny & Goście",
+        "department": "Sieć Bezprzewodowa",
+        "model": "Ubiquiti UniFi U6 Enterprise",
+        "cpuRam": "Wi-Fi 6E (2.4/5/6 GHz) 10.2 Gbps PoE+",
+        "serialNumber": "AP-WIFI6-01",
+        "ipAddress": "192.168.1.20",
+        "macAddress": "74:83:C2:FF:EE:DD",
+        "switchPort": "SW-CORE-P48 (PoE+)",
+        "status": "active"
+      }
+    },
+    {
+      "id": "conf_tbl_apollo",
+      "type": "conf_table",
+      "x": 740,
+      "y": 470,
+      "width": 180,
+      "height": 90,
+      "rotation": 0,
+      "props": {
+        "label": "Stół Apollo"
+      }
+    },
+    {
+      "id": "chair_c1",
+      "type": "office_chair",
+      "x": 770,
+      "y": 425,
+      "width": 32,
+      "height": 32,
+      "rotation": 180,
+      "props": {}
+    },
+    {
+      "id": "chair_c2",
+      "type": "office_chair",
+      "x": 820,
+      "y": 425,
+      "width": 32,
+      "height": 32,
+      "rotation": 180,
+      "props": {}
+    },
+    {
+      "id": "chair_c3",
+      "type": "office_chair",
+      "x": 870,
+      "y": 425,
+      "width": 32,
+      "height": 32,
+      "rotation": 180,
+      "props": {}
+    },
+    {
+      "id": "chair_c4",
+      "type": "office_chair",
+      "x": 770,
+      "y": 570,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "chair_c5",
+      "type": "office_chair",
+      "x": 820,
+      "y": 570,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "chair_c6",
+      "type": "office_chair",
+      "x": 870,
+      "y": 570,
+      "width": 32,
+      "height": 32,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "conf_system",
+      "type": "dual_monitor",
+      "x": 795,
+      "y": 485,
+      "width": 70,
+      "height": 42,
+      "rotation": 0,
+      "props": {
+        "employee": "System Wideokonferencji",
+        "department": "Sala Apollo",
+        "model": "Logitech Rally Bar + Ekran 75\" 4K Sony BRAVIA",
+        "cpuRam": "Kamera 4K Ultra-HD z AI, 6x mikrofon beamforming",
+        "serialNumber": "VC-APOLLO-01",
+        "ipAddress": "192.168.1.150",
+        "macAddress": "00:04:F2:99:11:22",
+        "switchPort": "SW-CORE-P15",
+        "status": "active"
+      }
+    },
+    {
+      "id": "asset_mt3b1ho5_3xjh",
+      "type": "pc_workstation",
+      "x": 140,
+      "y": 120,
+      "width": 48,
+      "height": 48,
+      "rotation": 45,
+      "props": {
+        "employee": "Tester Testowy",
+        "department": "QA Department",
+        "model": "Dell OptiPlex 7090 MT",
+        "cpuRam": "i7-11700 / 32GB RAM / 1TB SSD",
+        "serialNumber": "SN-PC-00",
+        "ipAddress": "192.168.1.10",
+        "macAddress": "00:1A:2B:3C:4D:5E",
+        "switchPort": "SW1-P01",
+        "status": "active"
+      }
+    },
+    {
+      "id": "asset_mtofj96p_j9mv",
+      "type": "pc_workstation",
+      "x": 140,
+      "y": 120,
+      "width": 48,
+      "height": 48,
+      "rotation": 0,
+      "props": {
+        "employee": "Jan Tester",
+        "department": "IT / Dev",
+        "model": "Dell OptiPlex 7090 MT",
+        "cpuRam": "i7-11700 / 32GB RAM / 1TB SSD",
+        "serialNumber": "SN-PC-00",
+        "ipAddress": "192.168.1.10",
+        "macAddress": "00:1A:2B:3C:4D:5E",
+        "switchPort": "SW1-P01",
+        "status": "active"
+      }
+    }
+  ],
+  "cables": [
+    {
+      "id": "c1",
+      "fromId": "sw_core",
+      "toId": "rack_main",
+      "type": "fiber",
+      "color": "#ec4899",
+      "label": "Fiber 20G Trunk"
+    },
+    {
+      "id": "c2",
+      "fromId": "sw_core",
+      "toId": "ups_rack",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "Zarządzanie UPS"
+    },
+    {
+      "id": "c3",
+      "fromId": "sw_core",
+      "toId": "ap_openspace",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "PoE+ AP Wi-Fi"
+    },
+    {
+      "id": "c4",
+      "fromId": "sw_core",
+      "toId": "prn_central",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "LAN Drukarka"
+    },
+    {
+      "id": "c5",
+      "fromId": "sw_core",
+      "toId": "pc_dev_01",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "Gniazdo DEV 1"
+    },
+    {
+      "id": "c6",
+      "fromId": "sw_core",
+      "toId": "pc_dev_03",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "Gniazdo DEV 3"
+    },
+    {
+      "id": "c7",
+      "fromId": "sw_core",
+      "toId": "conf_system",
+      "type": "lan",
+      "color": "#3b82f6",
+      "label": "LAN Konferencja"
+    }
+  ],
+  "panX": 500,
+  "panY": 272.5,
+  "scale": 1,
+  "updatedAt": "2026-09-05T13:50:11.682Z",
+  "roomId": "room_default",
+  "savedAt": "2026-09-05T13:50:11.990Z"
+}

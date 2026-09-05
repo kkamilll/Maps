@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office IT Maps - Planer Biura i Ewidencja Sprzętu</title>
+    <meta name="description" content="Prosta aplikacja do planowania rzutu biura, rozmieszczania komputerów i ewidencji sprzętu IT.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- GŁÓWNY NAGŁÓWEK -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo-brand">
+                <span class="logo-icon">📐</span>
+                <span>Office Maps</span>
+            </div>
+            
+            <div class="room-selector-wrapper">
+                <select id="room-selector" class="room-select" title="Wybierz pomieszczenie"></select>
+                <button id="btn-add-room" class="btn-icon" title="Dodaj pomieszczenie">+</button>
+            </div>
+
+            <span id="header-save-badge" class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3);">🟢 Zapisano</span>
+        </div>
+
+        <!-- SZYBKA WYSZUKIWARKA -->
+        <div class="header-center">
+            <div id="search-container" class="search-container">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="header-quick-search" class="header-search-input" placeholder="Szukaj..." autocomplete="off">
+                </div>
+                <div id="search-results-dropdown" class="search-dropdown hidden"></div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <button id="btn-open-inventory" class="btn btn-secondary" title="Spis sprzętu">
+                📋 Spis
+            </button>
+            
+            <button id="btn-export-png" class="btn btn-primary" title="Pobierz obraz PNG">
+                🖼️ PNG
+            </button>
+
+            <button id="btn-export-json" class="btn btn-secondary" title="Zapisz kopię do pliku">
+                💾 Zapisz
+            </button>
+
+            <button id="btn-import-json" class="btn btn-secondary" title="Wczytaj z pliku">
+                📂 Wczytaj
+            </button>
+            <input type="file" id="file-input-json" accept=".json" class="hidden">
+
+            <button id="btn-theme-toggle" class="btn btn-secondary" title="Zmień motyw" style="padding: 6px 10px;">
+                ☀️
+            </button>
+        </div>
+    </header>
+
+    <!-- PASEK NARZĘDZI -->
+    <div class="app-toolbar">
+        <button id="btn-toggle-palette" class="tool-btn active" title="Przełącz paletę">
+            📦 Paleta
+        </button>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+            <button id="tool-select" class="tool-btn active" title="Wskaźnik">
+                🖱️ Wskaźnik
+            </button>
+            <button id="tool-cable" class="tool-btn" title="Kabel">
+                🔌 Kabel
+            </button>
+        </div>
+
+        <div id="cable-toolbar-options" class="cable-options-group hidden">
+            <select id="cable-type-select" class="form-select" style="padding: 2px 6px; font-size: 0.76rem; width: auto;">
+                <option value="lan">🔵 LAN (RJ45)</option>
+                <option value="fiber">🟣 Światłowód</option>
+                <option value="power">🔴 Zasilanie</option>
+                <option value="hdmi">🟡 HDMI/DP</option>
+            </select>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+            <button id="btn-zoom-in" class="btn-icon" title="Powiększ">🔍+</button>
+            <button id="btn-zoom-out" class="btn-icon" title="Pomniejsz">🔍-</button>
+            <button id="btn-zoom-reset" class="btn-icon" title="Wyśrodkuj">⛶</button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+            <button id="toggle-grid" class="tool-btn active" title="Siatka">Siatka</button>
+            <button id="toggle-snap" class="tool-btn active" title="Przyciąganie">Snap</button>
+            <button id="toggle-labels" class="tool-btn active" title="Podpisy">Podpisy</button>
+            <button id="toggle-cables" class="tool-btn active" title="Kable">Kable</button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+            <button id="btn-undo" class="btn-icon" title="Cofnij">↩️</button>
+            <button id="btn-redo" class="btn-icon" title="Ponów">↪️</button>
+            <button id="btn-rotate-right" class="btn-icon" title="Obróć o 45°">↻</button>
+            <button id="btn-duplicate" class="btn-icon" title="Duplikuj">📑</button>
+            <button id="btn-delete-selected" class="btn-icon" title="Usuń">🗑️</button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <div class="toolbar-group">
+            <button id="btn-load-demo" class="tool-btn" title="Załaduj przykład">🏢 Przykład</button>
+            <button id="btn-clear-canvas" class="tool-btn" style="color: var(--accent-rose);" title="Wyczyść">❌ Wyczyść</button>
+        </div>
+
+        <button id="btn-toggle-inspector" class="tool-btn active" style="margin-left: auto;" title="Przełącz właściwości">
+            ⚙️ Właściwości
+        </button>
+    </div>
+
+    <!-- GŁÓWNY OBSZAR -->
+    <main class="main-workspace">
+        <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
+        <!-- LEWY PANEL -->
+        <aside id="sidebar-palette" class="sidebar-palette">
+            <div class="palette-header-bar mobile-only">
+                <span>📦 Paleta obiektów</span>
+                <button id="btn-close-palette" class="btn-icon" style="width: 28px; height: 28px;">&times;</button>
+            </div>
+            <div class="palette-tabs-nav">
+                <button class="palette-tab-btn active" data-category="it_workstation">💻 Komputery</button>
+                <button class="palette-tab-btn" data-category="it_network">🖧 Sieć</button>
+                <button class="palette-tab-btn" data-category="it_peripherals">🖨️ Peryferia</button>
+                <button class="palette-tab-btn" data-category="furniture">🪑 Meble</button>
+                <button class="palette-tab-btn" data-category="infrastructure">🧱 Ściany</button>
+                <button class="palette-tab-btn" data-category="zones">🏷️ Strefy</button>
+            </div>
+
+            <div class="palette-content">
+                <div id="palette-categories-container" class="palette-items-grid"></div>
+            </div>
+        </aside>
+
+        <!-- CENTRUM: OBSZAR RYSOWANIA CANVAS -->
+        <div id="canvas-viewport" class="canvas-viewport">
+            <canvas id="office-canvas"></canvas>
+        </div>
+
+        <!-- PRAWY PANEL -->
+        <aside id="sidebar-inspector" class="sidebar-inspector">
+            <div class="inspector-header-bar">
+                <span>Właściwości</span>
+                <button id="btn-close-inspector" class="btn-icon mobile-only" style="width: 28px; height: 28px; margin-left: auto;">&times;</button>
+            </div>
+            <div id="inspector-content" class="inspector-content">
+                <!-- Generowane dynamicznie przez app.js -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- MODAL PEŁNEJ TABELI INWENTARYZACYJNEJ -->
+    <div id="inventory-modal" class="modal-backdrop hidden">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <span>📋 Ewidencja Sprzętu Komputerowego i Peryferii</span>
+                    <span id="inventory-count" class="badge-tag">0 urządzeń</span>
+                </div>
+                <button id="btn-close-inventory" class="btn-icon" style="border: none; font-size: 1.2rem;">&times;</button>
+            </div>
+
+            <div class="modal-toolbar">
+                <div class="modal-filters">
+                    <input type="text" id="inventory-search" class="form-input" style="max-width: 280px;" placeholder="Filtruj wg pracownika, S/N, IP, modelu...">
+                    <select id="inventory-filter-type" class="form-select" style="max-width: 220px;"></select>
+                    <select id="inventory-filter-status" class="form-select" style="max-width: 180px;">
+                        <option value="all">Wszystkie statusy</option>
+                        <option value="active">🟢 Tylko aktywne</option>
+                        <option value="repair">🟠 W naprawie</option>
+                        <option value="spare">🔵 Zapasowe</option>
+                        <option value="decommissioned">⚪ Wycofane</option>
+                    </select>
+                </div>
+                <button id="btn-export-csv-modal" class="btn btn-primary">
+                    📊 Eksportuj do CSV (Excel)
+                </button>
+            </div>
+
+            <div class="modal-body-table">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Urządzenie / Model</th>
+                            <th>Pracownik / Dział</th>
+                            <th>Nr Seryjny (S/N)</th>
+                            <th>Adres IP</th>
+                            <th>Adres MAC</th>
+                            <th>Port Switcha</th>
+                            <th>Status</th>
+                            <th style="width: 80px;">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table-body">
+                        <!-- Generowane dynamicznie przez inventory.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKRYPTY APLIKACJI -->
+    <script src="assets-data.js"></script>
+    <script src="canvas.js"></script>
+    <script src="storage.js"></script>
+    <script src="inventory.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
